@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>會考數自 B++～A 衝刺班</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --purple:#2A1659;--purple2:#3A2373;--purple3:#4B2A9E;
+  --yellow:#F7C948;--yellow-soft:#FFF6D6;
+  --bg:#FBFAFE;--text:#1C1233;--muted:#5A4E73;
+  --line:#E4DCF5;--white:#fff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;line-height:1.7}
+a{color:var(--purple3)}
+.serif{font-family:"Noto Serif TC",serif}
+.container{width:min(1120px,calc(100% - 32px));margin:auto}
+.topbar{background:var(--yellow);color:var(--purple);padding:8px 16px;text-align:center;font-weight:700;font-size:14px}
+.timer-inline{font-variant-numeric:tabular-nums;letter-spacing:.04em;margin-left:12px}
+nav{background:var(--purple);color:#fff}
+.nav-inner{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{color:#fff;text-decoration:none;display:flex;align-items:center;gap:12px;font-weight:700}
+.brand-mark{width:40px;height:40px;border-radius:10px;background:var(--yellow);color:var(--purple);display:grid;place-items:center;font-family:"Noto Serif TC",serif;font-size:18px;font-weight:900}
+.nav-links{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.nav-links a{color:#DCD2F5;text-decoration:none;font-size:14px}
+.pill-btn{background:var(--yellow)!important;color:var(--purple)!important;border-radius:999px;padding:10px 20px;font-weight:700!important}
+.hero{background:var(--purple);color:#fff;padding:80px 16px 100px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center}
+.eyebrow{display:inline-flex;border:1px solid #6A50C2;border-radius:999px;padding:6px 16px;color:#E9E2FA;font-size:14px;letter-spacing:.06em}
+h1{font-family:"Noto Serif TC",serif;font-size:clamp(40px,6vw,68px);line-height:1.2;margin:22px 0 0}
+.yellow{color:var(--yellow)}
+.hero-copy{font-size:19px;color:#DCD2F5;margin:24px 0 0;max-width:34em}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:13px 28px;border-radius:999px;text-decoration:none;font-weight:700;font-size:16px;border:0;cursor:pointer}
+.btn-yellow{background:var(--yellow);color:var(--purple)}
+.btn-outline{border:1px solid #7C64CC;color:#fff;background:transparent}
+.stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.stat{background:var(--purple2);border-radius:18px;padding:24px}
+.stat.highlight{background:var(--yellow);color:var(--purple)}
+.stat-num{font-family:"Noto Serif TC",serif;font-size:44px;font-weight:900;line-height:1;color:var(--yellow)}
+.highlight .stat-num{color:var(--purple)}
+.stat-label{margin-top:10px;color:#E9E2FA;font-size:15px}
+.highlight .stat-label{color:var(--purple)}
+section{padding:90px 16px}
+.kicker{color:var(--purple3);font-weight:700;letter-spacing:.12em;font-size:14px}
+.section-title{font-family:"Noto Serif TC",serif;font-size:clamp(30px,4vw,44px);line-height:1.3;margin:10px 0 0}
+.section-sub{color:var(--muted);font-size:17px;margin:12px 0 0}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:40px}
+.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px}
+.number{font-family:"Noto Serif TC",serif;font-size:28px;font-weight:900;color:#C9BBEB}
+.card h3{font-size:19px;line-height:1.4;margin:8px 0 0}
+.card p{font-size:15px;color:var(--muted);margin:10px 0 0}
+.band{margin-top:32px;background:#F1ECFB;border-radius:24px;padding:32px;display:grid;grid-template-columns:1fr 1.3fr;gap:36px;align-items:center}
+.band-title{font-family:"Noto Serif TC",serif;font-size:28px;font-weight:900;line-height:1.4;color:var(--purple)}
+.feature-list{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;font-size:15px}
+.feature-list strong{color:var(--purple3)}
+.method-section{background:#fff;border-top:1px solid #EEE8F8;border-bottom:1px solid #EEE8F8}
+.problem-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0 40px;margin-top:40px}
+.problem{border-top:2px solid var(--purple);padding:20px 0 28px}
+.problem h3{font-size:19px;margin:0}
+.problem p{color:var(--muted);font-size:15px;margin:8px 0 0}
+.method-box{margin-top:30px;background:var(--purple);color:#fff;border-radius:28px;padding:46px}
+.method-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end}
+.method-head h3{font-family:"Noto Serif TC",serif;font-size:38px;line-height:1.3;margin:8px 0 0}
+.method-head p{color:#DCD2F5;margin:0}
+.r-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:35px}
+.r-card{background:var(--purple2);border-radius:18px;padding:22px}
+.r-card:last-child{background:var(--yellow);color:var(--purple)}
+.r-no{font-family:"Noto Serif TC",serif;font-size:30px;font-weight:900;color:var(--yellow)}
+.r-card:last-child .r-no{color:var(--purple)}
+.r-en{font-size:12px;letter-spacing:.08em;color:#BFAEEA;font-weight:700;margin-top:12px}
+.r-card:last-child .r-en{color:#5B4300}
+.r-title{font-size:18px;font-weight:700}
+.r-card p{font-size:14px;color:#DCD2F5;margin:6px 0 0}
+.r-card:last-child p{color:#3D2B00}
+.method-bottom{border-top:1px solid #4A3388;margin-top:32px;padding-top:24px;font-family:"Noto Serif TC",serif;font-size:21px}
+.trial-section{background:#F1ECFB}
+.trials{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
+.trial{background:#fff;border:1px solid var(--line);border-radius:22px;padding:28px;display:flex;flex-direction:column}
+.trial-tag{display:inline-block;align-self:flex-start;background:var(--purple);color:var(--yellow);font-size:13px;font-weight:700;padding:4px 12px;border-radius:999px}
+.trial h3{font-size:21px;margin:16px 0 0}
+.trial p{font-size:15px;color:var(--muted);min-height:70px}
+.video-btn{margin-top:auto;background:var(--purple);color:#fff;text-decoration:none;text-align:center;border-radius:999px;padding:13px 20px;font-weight:700}
+.plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
+.plan-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:30px}
+.tag{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.tag span:first-child{background:var(--purple);color:var(--yellow);padding:4px 12px;border-radius:999px;font-size:13px;font-weight:700}
+.value{font-size:14px;color:var(--muted)}
+.access-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:28px}
+.access{background:#F1ECFB;border-radius:18px;padding:24px}
+.access strong{color:var(--purple)}
+.faq-section{background:#fff;border-top:1px solid #EEE8F8}
+.faq-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:40px}
+.faq{border:1px solid var(--line);border-radius:24px;padding:32px}
+.faq h3{font-size:20px;margin:0}
+.faq p{color:var(--muted);font-size:15px}
+.pricing{background:var(--purple);color:#fff}
+.price-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:stretch}
+.price-list{margin-top:30px}
+.price-line{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid #4A3388}
+.price-line span:last-child{color:#DCD2F5;white-space:nowrap}
+.price-card{background:#fff;color:var(--text);border-radius:28px;padding:36px;display:flex;flex-direction:column;gap:15px}
+.offer-badge{align-self:flex-start;background:var(--yellow);color:var(--purple);font-size:14px;font-weight:700;padding:6px 14px;border-radius:999px}
+.count-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.count-box{background:var(--purple);color:#fff;border-radius:12px;padding:10px 4px;text-align:center}
+.count-box strong{font-family:"Noto Serif TC",serif;font-size:28px;color:var(--yellow);display:block;line-height:1.1}
+.count-box small{color:#DCD2F5}
+.old-price{text-decoration:line-through;color:var(--muted);font-size:18px}
+.main-price{font-family:"Noto Serif TC",serif;font-weight:900;font-size:64px;color:var(--purple);line-height:1}
+.installment{background:#F6F3FC;border-radius:14px;padding:14px 18px;color:var(--muted)}
+.order-section{background:#FBFAFE}
+.order-grid{display:grid;grid-template-columns:1fr .8fr;gap:24px;align-items:start;margin-top:40px}
+.form-card,.preview-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:30px}
+.preview-card{position:sticky;top:18px;background:#F6F3FC}
+label{display:block;font-weight:700;margin:15px 0 7px}
+input,select,textarea{width:100%;border:1px solid #D6CCE9;border-radius:12px;padding:13px 14px;font:inherit;outline:none;background:#fff}
+input:focus,select:focus,textarea:focus{border-color:var(--purple3);box-shadow:0 0 0 3px rgba(75,42,158,.1)}
+.radio-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.radio{border:1px solid #D6CCE9;border-radius:12px;padding:12px;cursor:pointer}
+.radio input{width:auto}
+.confirm-box{margin-top:20px;background:#F1ECFB;border-radius:16px;padding:18px}
+.confirm-row{display:flex;justify-content:space-between;gap:15px;padding:5px 0}
+.total{font-size:25px;color:var(--purple);font-weight:900}
+.check{display:flex;gap:8px;align-items:flex-start;font-size:14px;font-weight:500}
+.check input{width:auto;margin-top:5px}
+.copy-btn{width:100%;border:0;background:var(--purple);color:#fff;border-radius:999px;padding:15px 20px;font:inherit;font-weight:700;font-size:17px;cursor:pointer;margin-top:15px}
+.line-btn{display:flex;justify-content:center;align-items:center;background:var(--yellow);color:var(--purple);text-decoration:none;border-radius:999px;padding:14px 20px;font-weight:700;margin-top:10px}
+.success{display:none;background:#EAF8EF;color:#16803C;border-radius:12px;padding:12px;margin-top:12px;font-weight:700}
+.notice{margin-top:14px;background:var(--yellow-soft);border:1px solid #F0D27A;border-radius:14px;padding:14px 16px;color:#4A3500;font-size:14px}
+.preview-title{font-weight:700;color:var(--purple);margin-bottom:12px}
+#preview{white-space:pre-wrap;font-family:inherit;font-size:14px;color:#3E3358;margin:0}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:35px}
+.step{background:#fff;border:1px solid var(--line);border-radius:22px;padding:28px}
+.step-no{color:var(--purple3);font-weight:700;letter-spacing:.08em;font-size:14px}
+footer{background:#1C1233;color:#BFAEEA;padding:40px 16px;font-size:14px}
+.footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+@media(max-width:900px){
+ .nav-inner{padding:12px 0}.nav-links a:not(.pill-btn){display:none}
+ .hero-grid,.price-grid,.order-grid{grid-template-columns:1fr}
+ .cards{grid-template-columns:repeat(2,1fr)}
+ .plan-grid{grid-template-columns:repeat(2,1fr)}
+ .r-grid{grid-template-columns:repeat(2,1fr)}
+ .r-card:last-child{grid-column:span 2}
+ .access-grid,.trials,.steps{grid-template-columns:1fr}
+ .preview-card{position:static}.method-head,.band{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+ section{padding:65px 16px}.hero{padding:55px 16px 70px}
+ .stat-grid,.cards,.plan-grid,.problem-grid,.faq-grid,.feature-list{grid-template-columns:1fr}
+ .r-grid{grid-template-columns:1fr}.r-card:last-child{grid-column:auto}
+ .method-box,.form-card,.preview-card,.price-card{padding:24px}
+ .main-price{font-size:48px}.count-grid{gap:5px}
+ .timer-inline{display:block;margin:3px 0 0}
+}
+.avg-price{margin-top:8px;color:#F7C948;font-size:20px;font-weight:800;line-height:1.5}.avg-price strong{font-size:26px;color:#fff}@media(max-width:760px){.avg-price{font-size:18px}.avg-price strong{font-size:23px}}
+</style>
+<style>
+.time-value-section{padding:70px 20px;background:#F1ECFB}.time-value-card{max-width:1100px;margin:0 auto;background:#fff;border:1px solid #ddd3f2;border-radius:28px;padding:42px;display:grid;grid-template-columns:1.1fr .9fr;gap:38px;align-items:center;box-shadow:0 18px 50px rgba(42,22,89,.08)}.time-value-copy .eyebrow{display:inline-block;padding:8px 14px;border-radius:999px;background:#F7C948;color:#2A1659;font-weight:800;font-size:14px;margin-bottom:16px}.time-value-copy h3{font-family:"Noto Serif TC",serif;color:#2A1659;font-size:32px;line-height:1.35;margin:0 0 18px}.time-value-copy p{color:#5A4E73;line-height:1.9;font-size:17px}.score-visual{background:#2A1659;color:#fff;border-radius:24px;padding:28px}.score-title{font-size:18px;font-weight:800;margin-bottom:18px}.score-row{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.15)}.score-row strong,.score-total b{color:#F7C948;font-size:20px}.score-total{display:flex;justify-content:space-between;padding:18px 0}.score-note{padding:13px;border-radius:14px;background:rgba(255,255,255,.1);font-size:14px;line-height:1.7}@media(max-width:760px){.time-value-section{padding:45px 16px}.time-value-card{grid-template-columns:1fr;padding:26px 20px}.time-value-copy h3{font-size:26px}.score-total{flex-direction:column;gap:6px}}
+</style>
+
+<style>
+.time-value-section{padding:70px 20px;background:#F1ECFB}
+.time-value-card{max-width:1100px;margin:auto;background:#fff;border:1px solid #ddd3f2;border-radius:28px;padding:42px;display:grid;grid-template-columns:1.15fr .85fr;gap:38px;align-items:start;box-shadow:0 18px 50px rgba(42,22,89,.08)}
+.time-value-copy .eyebrow{display:inline-block;padding:8px 14px;border-radius:999px;background:#F7C948;color:#2A1659;font-weight:800;font-size:14px;margin-bottom:16px}
+.time-value-copy h3{font-family:"Noto Serif TC",serif;color:#2A1659;font-size:32px;line-height:1.35;margin:0 0 22px}
+.strategy-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.strategy-card{background:#FBFAFE;border:1px solid #E4DCF4;border-radius:18px;padding:20px}
+.strategy-number{color:#7B61B5;font-weight:900;font-size:13px;margin-bottom:8px}
+.strategy-card h4{color:#2A1659;font-size:18px;margin:0 0 9px}
+.strategy-card p{color:#5A4E73;line-height:1.75;font-size:15px;margin:0}
+.score-visual{background:#2A1659;color:#fff;border-radius:24px;padding:28px;position:sticky;top:20px}
+.score-title{font-size:19px;font-weight:800;line-height:1.5;margin-bottom:18px}
+.score-row{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.15)}
+.score-row strong{color:#F7C948;font-size:21px}
+.score-total{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:20px 0 12px}
+.score-total b{color:#F7C948;font-size:28px}
+.score-note{padding:14px;border-radius:14px;background:rgba(255,255,255,.1);font-size:14px;line-height:1.75;color:#F8F5FF}
+.price-per-subject{margin:16px auto 0;text-align:center}
+.price-per-subject-main{display:inline-block;background:#F7C948;color:#2A1659;border-radius:12px;padding:10px 18px;font-size:21px;font-weight:900;box-shadow:0 8px 22px rgba(247,201,72,.25)}
+.price-per-subject-main strong{font-size:29px;color:#C62828;margin-left:3px}
+.price-per-subject-sub{display:block;color:#6B5B85;font-size:13px;margin-top:7px}
+@media(max-width:760px){
+  .time-value-section{padding:45px 16px}
+  .time-value-card{grid-template-columns:1fr;padding:26px 20px;gap:24px}
+  .time-value-copy h3{font-size:26px}
+  .strategy-grid{grid-template-columns:1fr}
+  .score-visual{position:static}
+  .score-total{flex-direction:column;align-items:flex-start}
+  .price-per-subject-main{font-size:17px;padding:10px 12px}
+  .price-per-subject-main strong{font-size:25px}
+}
+</style>
+
+</head>
+<body>
+
+<div class="topbar">
+  <span>今日限定優惠</span>
+  <span class="timer-inline" id="topTimer">距離 24:00 還有 00:00:00</span>
+  <a href="#pricing" style="color:inherit;margin-left:10px">搶優惠價 $24,800</a>
+</div>
+
+<nav>
+  <div class="container nav-inner">
+    <a class="brand" href="#top"><span class="brand-mark">A</span><span>會考數自衝刺班</span></a>
+    <div class="nav-links">
+      <a href="#plan">方案內容</a>
+      <a href="#method">5R 系統</a>
+      <a href="#trials">試聽</a>
+      <a href="#faq">常見問題</a>
+      <a href="#order" class="pill-btn">立即報名</a>
+    </div>
+  </div>
+</nav>
+
+<section id="top" class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">給模考 C～B+ 的國三生</div>
+      <h1>會考數自<br><span class="yellow">B++ → A</span> 衝刺班</h1>
+      <p class="hero-copy">問題不是時間不夠，而是時間沒有用在刀口上。<br>先抓會考 80% 高頻考點，再求突破。</p>
+      <div class="hero-actions">
+        <a class="btn btn-yellow" href="#pricing">查看今日優惠</a>
+        <a class="btn btn-outline" href="#trials">先看課程試聽</a>
+      </div>
+    </div>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-num">14<span style="font-size:18px"> 小時</span></div><div class="stat-label">數學打通 1～6 冊</div></div>
+      <div class="stat"><div class="stat-num">12<span style="font-size:18px"> 小時</span></div><div class="stat-label">理化＋生物串起 1～6 冊</div></div>
+      <div class="stat"><div class="stat-num">80<span style="font-size:18px">%</span></div><div class="stat-label">聚焦會考高頻考點題型</div></div>
+      <div class="stat highlight"><div class="stat-num">3<span style="font-size:18px"> 次</span></div><div class="stat-label">模考前 2 小時聚焦直播</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="kicker">會考生現在面臨的困境</div>
+    <h2 class="section-title">這四個狀況，你中了幾個？</h2>
+    <div class="cards">
+      <div class="card"><div class="number">01</div><h3>時間變少，要讀的卻變多</h3><p>開學後讀書時間比暑假少，進度和複習量卻是暑假的好幾倍，每天都覺得讀不完。</p></div>
+      <div class="card"><div class="number">02</div><h3>數學題目寫很多，換個包裝還是錯</h3><p>講義、考卷寫了一大堆，題目一換問法就不會，越寫越沒信心，也不知道到底該怎麼讀。</p></div>
+      <div class="card"><div class="number">03</div><h3>理化想讀，卻看不懂、聽不懂</h3><p>不是不想努力，而是翻開課本、聽了講解還是卡住，只能乾耗時間，越拖越焦慮。</p></div>
+      <div class="card"><div class="number">04</div><h3>光顧數理，其他科只能放著</h3><p>為了拉起數學和理化花了大把時間，國英社眼看也開始落後，顧此失彼。</p></div>
+    </div>
+    <div class="band">
+      <div class="band-title">數理讀對方法，省下的時間，就是你顧好其他科的空間。</div>
+      <div class="feature-list">
+        <div><strong>聚焦 80% 考點題型</strong><br>先讀最常考的，不再什麼都讀不完</div>
+        <div><strong>5R 解題反射系統</strong><br>換個包裝也知道怎麼下手</div>
+        <div><strong>從看得懂開始</strong><br>把理化觀念拆解清楚</div>
+        <div><strong>每週計畫排好進度</strong><br>把時間留給其他科目</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="method" class="method-section">
+  <div class="container">
+    <div class="kicker">為什麼認真還是沒進步</div>
+    <h2 class="section-title">不是你不夠努力，<br>而是努力沒用在真正影響分數的地方</h2>
+    <div class="problem-grid">
+      <div class="problem"><h3>聽得懂，不代表寫得出來</h3><p>老師講時覺得「原來如此」，自己寫卻不知道該用哪個方法。你建立的是「聽課反應」，而不是看到題目就知道怎麼做的「解題反射」。</p></div>
+      <div class="problem"><h3>題目寫很多，錯誤卻一直重複</h3><p>錯了看詳解就過去，沒問自己「為什麼錯」。換張考卷、換個問法，還是一樣錯。</p></div>
+      <div class="problem"><h3>一直研究難題，基本題反而不穩</h3><p>對 C～B+ 的同學來說，拉分關鍵不是證明自己能解難題，而是先把高頻考點的基本題和中等題穩穩拿下。</p></div>
+      <div class="problem"><h3>一冊一冊讀，會考卻是混著考</h3><p>會考常跨冊整合出題。觀念沒有串起來，看到題目就認不出它在考什麼、該從哪一步下手。</p></div>
+    </div>
+
+    <div class="method-box">
+      <div class="method-head">
+        <div><div class="kicker" style="color:var(--yellow)">我的做法</div><h3>5R 數理解題反射系統</h3></div>
+        <p>我不會先叫你多刷 500 題，而是先找出你卡在哪一個 R。知道漏洞在哪裡，努力才有地方可以用。</p>
+      </div>
+      <div class="r-grid">
+        <div class="r-card"><div class="r-no">R1</div><div class="r-en">READ</div><div class="r-title">讀懂題目</div><p>弄清楚題目給了什麼、要問什麼</p></div>
+        <div class="r-card"><div class="r-no">R2</div><div class="r-en">RECOGNIZE</div><div class="r-title">找出關鍵</div><p>從關鍵字判斷在考哪個觀念</p></div>
+        <div class="r-card"><div class="r-no">R3</div><div class="r-en">RECALL</div><div class="r-title">叫回方法</div><p>把公式、觀念和相關題型叫出來</p></div>
+        <div class="r-card"><div class="r-no">R4</div><div class="r-en">RESOLVE</div><div class="r-title">拆解解題</div><p>把複雜題目拆成做得出來的步驟</p></div>
+        <div class="r-card"><div class="r-no">R5</div><div class="r-en">REVIEW</div><div class="r-title">檢討漏洞</div><p>不只知道答案，更知道自己為什麼錯</p></div>
+      </div>
+      <div class="method-bottom">C～B+ 不是上限，而是最有機會往上跳的位置。<br><span class="yellow">先建立解題反射，分數才會跟上你的努力。</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="trials" class="trial-section">
+  <div class="container">
+    <div class="kicker">先看試聽，再決定</div>
+    <h2 class="section-title">直接看看實際上課方式</h2>
+    <p class="section-sub">不用只看文案，先從數學、理化觀念與理化解題三支試聽了解課程節奏。</p>
+    <div class="trials">
+      <div class="trial"><span class="trial-tag">數學</span><h3>數學衝刺課程試聽</h3><p>看看數學總複習如何抓重點、整理高頻題型。</p><a class="video-btn" href="https://youtu.be/Znky0vFLp4s?si=j2JSxQpHOuYQGnmt" target="_blank" rel="noopener">觀看數學試聽</a></div>
+      <div class="trial"><span class="trial-tag">理化觀念</span><h3>理化觀念課程試聽</h3><p>看看理化觀念如何拆解，不只是背公式。</p><a class="video-btn" href="https://youtu.be/-ffd81NDQ60" target="_blank" rel="noopener">觀看理化觀念試聽</a></div>
+      <div class="trial"><span class="trial-tag">理化解題</span><h3>理化解題課程試聽</h3><p>看看如何從觀念一路走到題目解法。</p><a class="video-btn" href="https://youtu.be/nU9yPjxiXnw" target="_blank" rel="noopener">觀看理化解題試聽</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="plan">
+  <div class="container">
+    <div class="kicker">方案內容</div>
+    <h2 class="section-title">六大內容，一次打通數自</h2>
+    <div class="plan-grid">
+      <div class="plan-card"><div class="tag"><span>數學</span><span class="value">價值 $14,999</span></div><h3>數學總複習（預錄課程）｜14 小時打通 1～6 冊</h3><p>精選會考 80% 高頻考點與題型，帶你掌握最常考的解題套路。</p></div>
+      <div class="plan-card"><div class="tag"><span>理化＋生物</span><span class="value">價值 $14,999</span></div><h3>理化＋生物總複習（預錄課程）｜12 小時串起 1～6 冊</h3><p>聚焦 80% 必考題型，觀念與解題一次到位，告別零散記憶。</p></div>
+      <div class="plan-card"><div class="tag"><span>地科</span><span class="value">價值 $899</span></div><h3>地科會考總複習筆記</h3><p>重點整理成一本，考前快速翻閱，補齊最後一塊拼圖。</p></div>
+      <div class="plan-card"><div class="tag"><span style="background:var(--yellow)!important;color:var(--purple)!important">直播</span><span class="value">價值 $6,000</span></div><h3>三次模考前 2 小時聚焦直播課</h3><p>每次模考前抓重點、補弱點，沒空看直播也有回放。</p></div>
+      <div class="plan-card"><div class="tag"><span style="background:var(--yellow)!important;color:var(--purple)!important">計畫</span><span class="value">價值 $3,000</span></div><h3>6 週數學＋自然衝刺計畫</h3><p>每週進度排好，跟著做就不會落後，一步步穩穩前進。</p></div>
+      <div class="plan-card"><div class="tag"><span style="background:var(--yellow)!important;color:var(--purple)!important">寒假</span><span class="value">價值 $1,500</span></div><h3>寒假 3 週 1～6 冊衝刺計畫</h3><p>把寒假變成逆轉的關鍵，3 週有系統地全面複習。</p></div>
+    </div>
+    <div class="access-grid">
+      <div class="access"><strong>課程開通</strong><p>付款並完成對帳後，協助註冊並開通教學網帳號。</p></div>
+      <div class="access"><strong>觀看至 116 年 5 月 16 日（本屆會考結束）</strong><p>期間內不限次數觀看，哪裡不熟就重看哪裡。</p></div>
+      <div class="access"><strong>模考前直播社群</strong><p>對帳完成後邀請加入直播群組，每次聚焦直播都不錯過。</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="faq-section">
+  <div class="container">
+    <div class="kicker">常見問題</div>
+    <h2 class="section-title">已經有補習，還需要嗎？</h2>
+    <div class="faq-grid">
+      <div class="faq"><h3>Q｜已經有補習，會不會沒時間看課程？</h3><p>很多同學都有這個擔心，但這套課程正是為忙碌的會考生設計的。<br><br>課程直接聚焦會考高頻考點，幫你把時間花在最常考的題型上。單科總時數只有 12～14 小時，可以重複觀看，還有每週進度計畫幫你安排，不會跟補習時間打架。<br><br>想想看，自己刷題卻抓不到盲點和常考題型，花掉的時間早就不只 12～14 小時了。與其多花時間亂刷，不如先把方向抓對。<br><br><strong>數理讀對方法，省下的時間，就是你顧好其他科的空間。</strong></p></div>
+      <div class="faq"><h3>Q｜如果把補習停掉，改上這套課程呢？</h3><p>這也是很多家長正在考慮的選擇。總複習涵蓋 1～6 冊，讓有限時間集中在會考範圍與高頻題型。</p></div>
+      <div class="faq"><h3>Q｜模考前直播沒辦法參加怎麼辦？</h3><p>全程提供回放，不用擔心時間撞期。</p></div>
+      <div class="faq"><h3>Q｜課程可以看多久？</h3><p>付款完成並開通後，觀看期限至 116 年 5 月 16 日（本屆會考結束），期間不限次數觀看。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="time-value-section">
+  <div class="time-value-card">
+    <div class="time-value-copy">
+      <div class="eyebrow">把數理省下的時間，留給真正需要拉分的科目</div>
+      <h3>數理讀對方法，省下的時間，就是你顧好其他科的空間</h3>
+      <div class="strategy-grid">
+        <div class="strategy-card">
+          <div class="strategy-number">01</div>
+          <h4>聚焦 80% 考點題型</h4>
+          <p>先讀最常考的，不再什麼都讀不完，同時避開讀了也沒有考的窘境。</p>
+        </div>
+        <div class="strategy-card">
+          <div class="strategy-number">02</div>
+          <h4>5R 解題反射系統</h4>
+          <p>從審題到關鍵字聯想，換個包裝也知道怎麼下手，達到活用拿分。</p>
+        </div>
+        <div class="strategy-card">
+          <div class="strategy-number">03</div>
+          <h4>從看得懂開始</h4>
+          <p>把數理生觀念整理好給你，不再東漏西露，要寫很多題目才知道考點。</p>
+        </div>
+        <div class="strategy-card">
+          <div class="strategy-number">04</div>
+          <h4>每週計畫排好進度</h4>
+          <p>讓國三生能兼顧進度與模考複習，互不衝突。</p>
+        </div>
+      </div>
+    </div>
+    <div class="score-visual">
+      <div class="score-title">把省下來的時間，換成其他科的拉分空間</div>
+      <div class="score-row"><div>國文</div><strong>+1～2 個＋</strong></div>
+      <div class="score-row"><div>英文</div><strong>+1～2 個＋</strong></div>
+      <div class="score-row"><div>社會</div><strong>+1～2 個＋</strong></div>
+      <div class="score-total"><span>五科整體</span><b>+6～10 個＋</b></div>
+      <div class="score-note">數理不必一直消耗大量時間，省下來的時間，才能拿去補其他科的弱項。整體成績拉高，也會直接影響最後的志願選填。</div>
+    </div>
+  </div>
+</section>
+<section id="pricing" class="pricing">
+  <div class="container price-grid">
+    <div>
+      <div class="kicker" style="color:var(--yellow)">超值組合方案</div>
+      <h2 class="section-title" style="color:#fff">會考數自 B++～A 衝刺班</h2>
+      <div class="price-list">
+        <div class="price-line"><span>數學總複習｜14 小時</span><span>$14,999</span></div>
+        <div class="price-line"><span>理化＋生物總複習｜12 小時</span><span>$14,999</span></div>
+        <div class="price-line"><span>地科會考總複習筆記</span><span>$899</span></div>
+        <div class="price-line"><span>三次模考前 2 小時直播</span><span>$6,000</span></div>
+        <div class="price-line"><span>6 週數學＋自然衝刺計畫</span><span>$3,000</span></div>
+        <div class="price-line"><span>寒假 3 週衝刺計畫</span><span>$1,500</span></div>
+        <div class="price-line" style="font-weight:700;border:0"><span>總價值</span><span>$41,397</span></div>
+      </div>
+    </div>
+
+    <div class="price-card">
+      <div class="offer-badge">今日限定優惠｜不到 6 折</div>
+      <div class="count-grid">
+        <div class="count-box"><strong id="ph">00</strong><small>時</small></div>
+        <div class="count-box"><strong id="pm">00</strong><small>分</small></div>
+        <div class="count-box"><strong id="ps">00</strong><small>秒</small></div>
+        <div class="count-box"><strong>24</strong><small>截止</small></div>
+      </div>
+      <div class="old-price">原價總值 $41,397</div>
+      <div><span style="font-weight:700">只要</span></div>
+      <div class="main-price">$24,800</div>
+      <div class="avg-price"><div class="price-per-subject">
+  <span class="price-per-subject-main">數學＋自然兩科平均，一科只要 <strong>$12,400</strong></span>
+  <span class="price-per-subject-sub">$24,800 ÷ 2 科</span>
+</div></strong></div>
+      <div class="installment"><strong style="color:var(--purple3)">信用卡分 3 期</strong>，每期約 <strong>$8,267</strong></div>
+      <div style="color:var(--muted);font-size:15px">直接省下 <strong style="color:var(--text)">$16,597</strong>，優惠結束後恢復原價。</div>
+      <a class="btn" style="background:var(--purple);color:#fff" href="#order">我要填資料報名</a>
+      <div style="font-size:13px;color:var(--muted);text-align:center">信用卡分期・轉帳匯款</div>
+    </div>
+  </div>
+</section>
+
+<section id="order" class="order-section">
+  <div class="container">
+    <div class="kicker">最後一步</div>
+    <h2 class="section-title">確認資料後，直接傳給官方 LINE</h2>
+    <p class="section-sub">先確認好總價 $24,800，再由你收到資料後確認並提供對應收款連結。</p>
+
+    <div class="order-grid">
+      <div class="form-card">
+        <h3>填寫購買資料</h3>
+        <label for="buyer">購買人姓名 *</label>
+        <input id="buyer" placeholder="例如：王小明">
+        <label for="student">取件人姓名 *</label>
+        <input id="receiver" placeholder="例如：王小安">
+        <label for="phone">取件人電話 *</label>
+        <input id="receiverPhone" placeholder="例如：0912-345-678" inputmode="tel">
+        <label for="lineName">取件711門市 *</label>
+        <input id="store" placeholder="例如：台北市○○區○○門市">
+        <label>付款方式 *</label>
+        <div class="radio-grid">
+          <label class="radio"><input type="radio" name="payment" value="信用卡分 3 期"> 信用卡分 3 期</label>
+          <label class="radio"><input type="radio" name="payment" value="轉帳匯款"> 轉帳匯款</label>
+        </div>
+        <label for="note">備註（選填）</label>
+        <textarea id="note" rows="3" placeholder="例如：考前直播複習時間無法配合怎麼辦？"></textarea>
+
+        <div class="confirm-box">
+          <div class="confirm-row"><span>方案</span><strong>會考數自 B++～A</strong></div>
+          <div class="confirm-row"><span>今日優惠</span><strong class="total">$24,800</strong></div>
+          <div class="confirm-row"><span>信用卡 3 期</span><strong>約 $8,267／期</strong></div>
+        </div>
+
+        <label class="check"><input id="agree" type="checkbox"><span>我已確認今日優惠方案總價為 <strong>$24,800</strong>，並希望透過官方 LINE 取得付款連結。</span></label>
+
+        <button class="copy-btn" onclick="copyOrder()">一鍵複製訂購資料</button>
+        <div class="success" id="success">已複製訂購資料。接著開啟官方 LINE，貼上並傳送即可。</div>
+
+        <!-- 請將此網址替換成你的官方 LINE 加好友連結 -->
+        <a class="line-btn" href="https://lin.ee/WdaBSXL" target="_blank" rel="noopener">開啟官方 LINE</a>
+
+        <div class="notice"><strong>你的成交流程：</strong>家長填資料 → 確認 $24,800 → 複製訊息 → 傳到官方 LINE → 你確認資料 → 回覆對應收款連結。</div>
+      </div>
+
+      <div class="preview-card">
+        <div class="preview-title">傳給你的訊息預覽</div>
+        <pre id="preview"></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="kicker">付款後</div>
+    <h2 class="section-title">付款後只要 3 步驟，馬上開始衝刺</h2>
+    <div class="steps">
+      <div class="step"><div class="step-no">STEP 1</div><h3>確認付款與對帳</h3><p>付款完成後，依官方 LINE 流程完成資料確認。</p></div>
+      <div class="step"><div class="step-no">STEP 2</div><h3>提供寄件資料</h3><p>對帳完成後，協助處理教材寄送資訊。</p></div>
+      <div class="step"><div class="step-no">STEP 3</div><h3>開通課程＋直播群組</h3><p>開通線上課程並加入模考前直播群組，正式開始衝刺。</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <strong style="color:#fff">會考數自 B++～A 衝刺班</strong>
+    <span>課程觀看期限：116 年 5 月 16 日（本屆會考結束）・期間內不限次數觀看</span>
+  </div>
+</footer>
+
+<script>
+function updateCountdown(){
+  const now=new Date();
+  const end=new Date(now);
+  end.setHours(24,0,0,0);
+  const left=Math.max(0,end-now);
+  const total=Math.floor(left/1000);
+  const h=Math.floor(total/3600);
+  const m=Math.floor((total%3600)/60);
+  const s=total%60;
+  const pad=n=>String(n).padStart(2,"0");
+  const text=left>0 ? `距離 24:00 還有 ${pad(h)}:${pad(m)}:${pad(s)}` : "今日優惠已結束";
+  document.getElementById("topTimer").textContent=text;
+  document.getElementById("ph").textContent=pad(h);
+  document.getElementById("pm").textContent=pad(m);
+  document.getElementById("ps").textContent=pad(s);
+}
+function payment(){
+  const x=document.querySelector('input[name="payment"]:checked');
+  return x?x.value:"（尚未選擇）";
+}
+function message(){
+  const v=id=>document.getElementById(id).value.trim()||"（尚未填寫）";
+  return `您好，我想購買「會考數自 B++～A 衝刺班」。
+
+【購買資料】
+購買人姓名：${v("buyer")}
+取件人姓名：${v("receiver")}
+取件人電話：${v("receiverPhone")}
+取件711門市：${v("store")}
+（教材會寄送至指定711門市）
+
+【方案確認】
+方案：會考數自 B++～A 衝刺班
+今日優惠價：$24,800
+付款方式：${payment()}
+
+【備註】
+${v("note")}
+
+我已確認今日優惠方案為 $24,800，請協助確認資料並提供付款連結，謝謝！`;
+}
+function updatePreview(){document.getElementById("preview").textContent=message()}
+["buyer","receiver","receiverPhone","store","note"].forEach(id=>document.getElementById(id).addEventListener("input",updatePreview));
+document.querySelectorAll('input[name="payment"]').forEach(x=>x.addEventListener("change",updatePreview));
+async function copyOrder(){
+  const ids=["buyer","receiver","receiverPhone","store"];
+  if(ids.some(id=>!document.getElementById(id).value.trim())){alert("請先填寫購買人姓名、取件人姓名、取件人電話與取件711門市。");return}
+  if(!document.querySelector('input[name="payment"]:checked')){alert("請選擇付款方式。");return}
+  if(!document.getElementById("agree").checked){alert("請先勾選確認方案與總價。");return}
+  const txt=message();
+  try{await navigator.clipboard.writeText(txt)}
+  catch(e){const t=document.createElement("textarea");t.value=txt;document.body.appendChild(t);t.select();document.execCommand("copy");t.remove()}
+  document.getElementById("success").style.display="block";
+}
+updatePreview();updateCountdown();setInterval(updateCountdown,1000);
+</script>
+</body>
+</html>
